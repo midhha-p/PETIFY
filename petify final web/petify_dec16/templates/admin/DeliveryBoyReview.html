@@ -1,0 +1,130 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+    "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+    <title>Review Delivery Boy</title>
+    <style>
+        body {
+            background-color: #ffeb3b; /* Yellow background */
+            font-family: Arial, sans-serif;
+            color: #002b5c; /* Blue text */
+            margin: 0;
+            padding: 30px;
+        }
+
+        .form-section {
+            margin-bottom: 30px;
+            display: flex;
+            flex-wrap: wrap;
+            gap: 15px;
+            align-items: center;
+        }
+
+        .form-control {
+            padding: 10px;
+            width: 200px;
+            border: 1px solid #002b5c;
+            border-radius: 5px;
+            color: #002b5c;
+            background-color: #fff;
+        }
+
+        .form-section label {
+            font-weight: bold;
+        }
+
+        .btn-blue {
+            background-color: #002b5c;
+            color: #ffeb3b;
+            border: none;
+            padding: 10px 20px;
+            font-weight: bold;
+            border-radius: 5px;
+            cursor: pointer;
+        }
+
+        .btn-blue:hover {
+            background-color: #003974;
+        }
+
+        .table-container {
+            overflow-x: auto;
+        }
+
+        .table {
+            width: 100%;
+            border-collapse: collapse;
+            background-color: #fff;
+            color: #002b5c;
+            border-radius: 8px;
+            overflow: hidden;
+            box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
+        }
+
+        .table th, .table td {
+            padding: 12px 15px;
+            text-align: center;
+            border: 1px solid #002b5c;
+        }
+
+        .table th {
+            background-color: #002b5c;
+            color: #ffeb3b;
+            font-weight: bold;
+        }
+
+        @media screen and (max-width: 768px) {
+            .form-section {
+                flex-direction: column;
+                align-items: flex-start;
+            }
+
+            .form-control {
+                width: 100%;
+            }
+        }
+    </style>
+</head>
+
+{% extends 'admin/adminindex.html' %}
+{% block body %}
+<body>
+    <form id="form1" name="form1" method="post" action="/myapp/Reviewdeliveryboy_post/">
+        {% csrf_token %}
+        <div class="form-section">
+            <label>From:</label>
+            <input type="date" name="from" class="form-control" required />
+            <label>To:</label>
+            <input type="date" name="to" class="form-control" required />
+            <input type="submit" value="Search" class="btn-blue" />
+        </div>
+
+        <div class="table-container">
+            <table class="table">
+                <thead>
+                    <tr>
+                        <th>SL No</th>
+                        <th>User Name</th>
+                        <th>Date</th>
+                        <th>Rating</th>
+                        <th>Review</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    {% for i in data %}
+                    <tr>
+                        <td>{{ forloop.counter }}</td>
+                        <td>{{ i.USER.username }}</td>
+                        <td>{{ i.date }}</td>
+                        <td>{{ i.rating }}</td>
+                        <td>{{ i.review }}</td>
+                    </tr>
+                    {% endfor %}
+                </tbody>
+            </table>
+        </div>
+    </form>
+</body>
+{% endblock %}
+</html>

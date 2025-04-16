@@ -1,0 +1,37 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<title>Untitled Document</title>
+</head>
+{% extends 'pet shop/shopindex.html' %}
+{% block body %}
+<body>
+<form id="form1" name="form1" method="post" action="/myapp/Viewgroomingreq_post/">
+<table class="table table-bordered">
+    <tr>
+      <th scope="col">SL no</th>
+      <th scope="col">Date</th>
+{#      <th scope="col">Order Details</th>#}
+      <th scope="col">User Details</th>
+{#      <th scope="col">Address</th>#}
+      <th scope="col">Amount</th>
+{#      <th scope="col">&nbsp;</th>#}
+    </tr>
+      {% for i in data %}
+
+    <tr>
+      <td>&nbsp;{{ forloop.counter }}</td>
+      <td>{{ i.date }}</td>
+{#      <td>&nbsp;{{ i.PET.photo }}<br>{{ i.PET.breed }}<br>{{ i.PET.age }}<br>{{ i.PET.age }}<br>{{ i.PET.description }}<br>{{ i.PET.price }}<br>{{ i.PET.gender }}</td>#}
+      <td>&nbsp;{{ i.USER.username }}<br>&nbsp;{{ i.USER.email }}<br>&nbsp;{{ i.USER.phone_no }}<br>&nbsp;{{ i.USER.place }}<br>&nbsp;{{ i.USER.city }}<br>&nbsp;{{ i.USER.state }}<br>&nbsp;{{ i.USER.pincode }}</td>
+      <td>{{ i.amount}}</td>
+    <td><a href="/myapp/moreorderpetdetails_get/{{ i.id }}">more details</a></td>
+    </tr>
+
+{% endfor %}
+  </table>
+</form>
+</body>
+{% endblock %}
+</html>

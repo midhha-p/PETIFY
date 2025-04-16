@@ -1,0 +1,37 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<title>Untitled Document</title>
+</head>
+{% extends 'pet shop/shopindex.html' %}
+{% block body %}
+<body>
+<form id="form1" name="form1" method="post" action="/myapp/Editgrooming_post/">
+    {% csrf_token %}
+<table class="table table-bordered">
+    <tr>
+      <input type="hidden" name="id" value="{{ data.id }}">
+      <th scope="col">Grooming Name</th>
+      <th scope="col"><label for="textfield"></label>
+        <input type="text" name="textfield"class="form-control"pattern="[A-Z a-z]*" value="{{ data.grooming_name }}" id="textfield" /></th>
+    </tr>
+    <tr>
+      <td><p>Grooming Price</p></td>
+      <td><label for="textfield2"></label>
+        <input type="text" name="textfield2"class="form-control" value="{{ data.grooming_price }}"id="textfield2" /></td>
+    </tr>
+    <tr>
+      <td>Package Details</td>
+      <td><label for="textarea"></label>
+        <textarea name="textarea" id="textarea"class="form-control"required cols="45" rows="5">{{ data.package_details }}</textarea></td>
+    </tr>
+    <tr>
+      <td><input type="submit" name="button" id="button" value="Edit"class="btn btn-warning" /></td>
+      <td>&nbsp;</td>
+    </tr>
+  </table>
+</form>
+</body>
+{% endblock %}
+</html>

@@ -1,0 +1,99 @@
+{% extends 'pet shop/shopindex.html' %}
+{% block body %}
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+    <meta charset="utf-8" />
+    <title>Add Pet Products</title>
+    <style>
+        body {
+            background-color: #ffffff;
+            font-family: Arial, sans-serif;
+        }
+
+        table {
+            width: 100%;
+            border-collapse: collapse;
+            background-color: #fff8b3; /* Light yellow */
+        }
+
+        th, td {
+            border: 1px solid #007bff; /* Blue border */
+            padding: 10px;
+            color: #0047ab; /* Blue text */
+        }
+
+        th {
+            background-color: #ffe066;
+            font-weight: bold;
+        }
+
+        input[type="text"],
+        input[type="file"],
+        textarea {
+            width: 100%;
+            padding: 8px;
+            border: 1px solid #007bff;
+            border-radius: 5px;
+            color: #0047ab;
+        }
+
+        input[type="radio"] {
+            margin-right: 5px;
+        }
+
+        .btn {
+            padding: 8px 16px;
+            border-radius: 6px;
+            font-weight: bold;
+            font-size: 14px;
+            text-decoration: none;
+        }
+
+        .btn-warning {
+            background-color: #ffc107;
+            color: #000;
+            border: none;
+        }
+
+        .btn-warning:hover {
+            background-color: #ffcd39;
+        }
+    </style>
+</head>
+<body>
+    <form action="/myapp/addpet_products_post/" method="post" enctype="multipart/form-data" name="form1" id="form1">
+        {% csrf_token %}
+        <table class="table table-bordered">
+            <tr>
+                <td>Product Name</td>
+                <td><input type="text" name="textfield" id="textfield" class="form-control" pattern="[A-Z a-z]*" /></td>
+            </tr>
+            <tr>
+                <th>Photo</th>
+                <th><input type="file" name="fileField" id="fileField" class="form-control" /></th>
+            </tr>
+            <tr>
+                <td>Description</td>
+                <td><textarea name="textarea" id="textarea" class="form-control" required cols="45" rows="5"></textarea></td>
+            </tr>
+            <tr>
+                <td>Price</td>
+                <td><input type="text" name="textfield3" id="textfield3" class="form-control" /></td>
+            </tr>
+            <tr>
+                <td>Type</td>
+                <td>
+                    <input type="radio" name="textfield6" id="textfield6" value="FOOD" /> FOOD
+                    <input type="radio" name="textfield6" id="textfield6" value="ACCESSORIES" /> ACCESSORIES
+                </td>
+            </tr>
+            <tr>
+                <td><input type="submit" name="button" id="button" value="Add" class="btn btn-warning" /></td>
+                <td></td>
+            </tr>
+        </table>
+    </form>
+</body>
+</html>
+{% endblock %}

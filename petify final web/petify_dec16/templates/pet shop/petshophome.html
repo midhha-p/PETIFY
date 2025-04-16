@@ -1,0 +1,70 @@
+{% extends 'pet shop/shopindex.html' %}
+{% block body %}
+<style>
+    body {
+        font-family: Arial, sans-serif;
+        margin: 0;
+        background: linear-gradient(to right, #007bff, #f7e700);
+        color: #fff;
+        padding-top: 80px; /* Space for navbar */
+    }
+
+    .navbar {
+        position: fixed;
+        top: 0;
+        left: 0;
+        width: 100%;
+        background-color: #002b5c;
+        display: flex;
+        flex-wrap: wrap;
+        justify-content: center;
+        align-items: center;
+        padding: 15px 20px;
+        z-index: 1000;
+        box-shadow: 0 2px 10px rgba(0,0,0,0.3);
+    }
+
+    .navbar a {
+        color: #fff;
+        background-color: transparent;
+        text-decoration: none;
+        margin: 8px 15px;
+        font-weight: bold;
+        padding: 10px 16px;
+        border-radius: 8px;
+        transition: 0.3s;
+    }
+
+    .navbar a:hover {
+        background-color: #f7e700;
+        color: #002b5c;
+    }
+
+    .dashboard-heading {
+        text-align: center;
+        color: #fff;
+        text-shadow: 1px 1px 2px #000;
+        margin-bottom: 40px;
+        font-size: 36px;
+        font-weight: bold;
+    }
+</style>
+
+<div class="navbar">
+    <a href="/myapp/Addpet/">Add Pet</a>
+    <a href="/myapp/Viewpet/">View Pets</a>
+    <a href="/myapp/addpet_products_get/">Add Pet Products</a>
+    <a href="/myapp/Viewpetproducts/">View Pet Products</a>
+    <a href="/myapp/Addgrooming/">Add Grooming</a>
+    <a href="/myapp/Viewgrooming/">View Grooming</a>
+    <a href="/myapp/Viewgroomingreq/">Grooming Requests</a>
+    <a href="/myapp/viewapprovedgroomingreq/">Approved Grooming</a>
+    <a href="/myapp/viewrejectedgroomingreq/">Rejected Grooming</a>
+    <a href="/myapp/Viewdeliveryboy/">Assign Delivery Boy</a>
+    <a href="/myapp/viewpetorder_get/">Pet Orders</a>
+    <a href="/myapp/Vieworder/">Product Orders</a>
+    <a href="/myapp/viewassignorder_get/">Assigned Orders</a>
+</div>
+
+<div class="dashboard-heading">Welcome to Pet Shop Dashboard</div>
+{% endblock %}

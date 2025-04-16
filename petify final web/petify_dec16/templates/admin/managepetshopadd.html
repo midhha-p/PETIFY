@@ -1,0 +1,117 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+    "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+    <title>Add Pet Shop</title>
+
+    <style>
+        body {
+            background-color: #002b5c; /* Solid dark blue background */
+            font-family: Arial, sans-serif;
+            color: #ffeb3b; /* Solid yellow text */
+            margin: 0;
+            padding: 0;
+        }
+
+        .form-container {
+            background-color: #002b5c; /* Same solid blue for container */
+            padding: 40px;
+            margin: 40px auto;
+            border-radius: 0px;
+            max-width: 700px;
+            border: 2px solid #ffeb3b; /* Yellow border */
+        }
+
+        .form-container h2 {
+            text-align: center;
+            color: #ffeb3b;
+            margin-bottom: 30px;
+        }
+
+        .form-label {
+            color: #ffeb3b;
+            font-weight: bold;
+        }
+
+        .form-control {
+            width: 100%;
+            padding: 10px;
+            border: 1px solid #ffeb3b;
+            background-color: #002b5c;
+            color: #ffeb3b;
+            border-radius: 0px;
+            margin-bottom: 15px;
+        }
+
+        .form-control::placeholder {
+            color: #ffe;
+        }
+
+        .btn-warning {
+            background-color: #ffeb3b;
+            border: none;
+            color: #002b5c;
+            font-weight: bold;
+            padding: 10px 25px;
+            cursor: pointer;
+        }
+
+        .btn-warning:hover {
+            background-color: #fff44f;
+        }
+
+        .table {
+            width: 100%;
+        }
+
+        .table td {
+            padding: 10px;
+            vertical-align: middle;
+        }
+    </style>
+</head>
+
+{% extends 'admin/adminindex.html' %}
+{% block body %}
+<body>
+    <div class="form-container">
+        <h2>Add Pet Shop</h2>
+        <form action="/myapp/Addpetshop_post/" method="post" enctype="multipart/form-data" name="form1" id="form1">
+            {% csrf_token %}
+            <table class="table">
+                <tr>
+                    <td class="form-label">Shop Name</td>
+                    <td><input type="text" name="textfield" id="textfield" class="form-control" pattern="[A-Za-z ]*" required /></td>
+                </tr>
+                <tr>
+                    <td class="form-label">Place</td>
+                    <td><input type="text" name="textfield2" id="textfield2" class="form-control" required /></td>
+                </tr>
+                <tr>
+                    <td class="form-label">Post</td>
+                    <td><input type="text" name="textfield3" id="textfield3" class="form-control" /></td>
+                </tr>
+                <tr>
+                    <td class="form-label">Phone No</td>
+                    <td><input type="text" name="textfield4" id="textfield4" class="form-control" pattern="[9876][0-9]{9}" maxlength="10" required /></td>
+                </tr>
+                <tr>
+                    <td class="form-label">Email</td>
+                    <td><input type="email" name="textfield5" id="textfield5" class="form-control" required /></td>
+                </tr>
+                <tr>
+                    <td class="form-label">Photo</td>
+                    <td><input type="file" name="fileField" id="fileField" class="form-control" /></td>
+                </tr>
+                <tr>
+                    <td colspan="2" style="text-align: center;">
+                        <input type="submit" name="button" id="button" value="Add" class="btn btn-warning" />
+                    </td>
+                </tr>
+            </table>
+        </form>
+    </div>
+</body>
+{% endblock %}
+</html>

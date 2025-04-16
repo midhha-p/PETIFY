@@ -1,0 +1,93 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+    "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+    <title>Change Password</title>
+    <style>
+        body {
+            background-color: #ffeb3b; /* Yellow background */
+            font-family: Arial, sans-serif;
+            padding: 40px;
+            margin: 0;
+            color: #002b5c; /* Blue text */
+        }
+
+        .form-table {
+            width: 60%;
+            margin: auto;
+            background-color: #fff;
+            border-collapse: collapse;
+            border-radius: 10px;
+            box-shadow: 0 4px 15px rgba(0, 0, 0, 0.2);
+            overflow: hidden;
+            color: #002b5c;
+        }
+
+        .form-table th, .form-table td {
+            padding: 15px 20px;
+            border: 1px solid #002b5c;
+            text-align: left;
+            vertical-align: middle;
+            font-weight: bold;
+        }
+
+        .form-control {
+            width: 100%;
+            padding: 10px;
+            border: 1px solid #002b5c;
+            border-radius: 5px;
+            font-size: 14px;
+            color: #002b5c;
+        }
+
+        .btn-blue {
+            background-color: #002b5c;
+            color: #ffeb3b;
+            padding: 10px 20px;
+            font-weight: bold;
+            border-radius: 5px;
+            border: none;
+            cursor: pointer;
+        }
+
+        .btn-blue:hover {
+            background-color: #003974;
+        }
+
+        @media screen and (max-width: 768px) {
+            .form-table {
+                width: 95%;
+            }
+        }
+    </style>
+</head>
+
+{% extends 'admin/adminindex.html' %}
+{% block body %}
+<body>
+    <form id="form1" name="form1" method="post" action="/myapp/Changepassdb_post/">
+        {% csrf_token %}
+        <table class="form-table">
+            <tr>
+                <th>Current Password</th>
+                <td><input type="password" name="textfield" id="textfield" class="form-control" required /></td>
+            </tr>
+            <tr>
+                <th>New Password</th>
+                <td><input type="password" name="textfield2" id="textfield2" class="form-control" required /></td>
+            </tr>
+            <tr>
+                <th>Confirm Password</th>
+                <td><input type="password" name="textfield3" id="textfield3" class="form-control" required /></td>
+            </tr>
+            <tr>
+                <td colspan="2" style="text-align:center;">
+                    <input type="submit" name="button" id="button" value="Change Password" class="btn-blue" />
+                </td>
+            </tr>
+        </table>
+    </form>
+</body>
+{% endblock %}
+</html>

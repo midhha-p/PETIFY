@@ -1,0 +1,86 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+    "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<title>Assign Order</title>
+
+<style>
+    body {
+        background-color: #ffeb3b; /* Yellow background */
+        font-family: Arial, sans-serif;
+        color: #002b5c; /* Blue text */
+        padding: 30px;
+        margin: 0;
+    }
+
+    .form-wrapper {
+        max-width: 600px;
+        margin: auto;
+        background-color: #fff;
+        padding: 25px;
+        border-radius: 10px;
+        box-shadow: 0 2px 10px rgba(0,0,0,0.1);
+    }
+
+    .form-control {
+        width: 100%;
+        padding: 10px;
+        border: 1px solid #002b5c;
+        border-radius: 6px;
+        margin-bottom: 20px;
+        color: #002b5c;
+    }
+
+    .btn-warning {
+        background-color: #002b5c;
+        color: #ffeb3b;
+        border: none;
+        padding: 10px 25px;
+        font-weight: bold;
+        border-radius: 6px;
+        cursor: pointer;
+    }
+
+    .btn-warning:hover {
+        background-color: #003974;
+    }
+
+    .form-label {
+        font-weight: bold;
+        margin-bottom: 8px;
+        display: block;
+        color: #002b5c;
+    }
+
+    @media screen and (max-width: 600px) {
+        .form-wrapper {
+            padding: 15px;
+        }
+    }
+</style>
+</head>
+
+{% extends 'pet shop/shopindex.html' %}
+{% block body %}
+
+<body>
+<div class="form-wrapper">
+    <form action="/myapp/assignorder_get_post/" method="post" enctype="multipart/form-data" name="form1" id="form1">
+        {% csrf_token %}
+        <input type="hidden" name="oid" value="{{ id }}">
+
+        <label class="form-label" for="del">Select Delivery Boy:</label>
+        <select name="del" id="del" class="form-control">
+            {% for i in data %}
+                <option value="{{ i.id }}">{{ i.name }}</option>
+            {% endfor %}
+        </select>
+
+        <input type="submit" name="button" id="button" value="Assign Order" class="btn-warning" />
+    </form>
+</div>
+</body>
+
+{% endblock %}
+</html>

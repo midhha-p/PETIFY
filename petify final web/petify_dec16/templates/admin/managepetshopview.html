@@ -1,0 +1,154 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+    "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+    <title>View Pet Shop</title>
+
+    <style>
+        body {
+            background-color: #ffeb3b; /* Yellow background */
+            font-family: Arial, sans-serif;
+            color: #002b5c; /* Blue text */
+            margin: 0;
+            padding: 30px;
+        }
+
+        .form-section {
+            margin-bottom: 30px;
+            display: flex;
+            gap: 10px;
+            align-items: center;
+            justify-content: flex-start;
+        }
+
+        .form-control {
+            padding: 10px;
+            width: 250px;
+            border: 1px solid #002b5c;
+            background-color: #fff;
+            color: #002b5c;
+            border-radius: 5px;
+        }
+
+        .btn-blue {
+            background-color: #002b5c;
+            color: #ffeb3b;
+            border: none;
+            padding: 10px 20px;
+            font-weight: bold;
+            border-radius: 5px;
+            cursor: pointer;
+            text-decoration: none;
+        }
+
+        .btn-blue:hover {
+            background-color: #003974;
+        }
+
+        .btn-danger {
+            background-color: #e53935;
+            border: none;
+            color: #fff;
+            padding: 10px 20px;
+            font-weight: bold;
+            border-radius: 5px;
+            text-decoration: none;
+        }
+
+        .btn-danger:hover {
+            background-color: #ff5252;
+        }
+
+        .table-container {
+            overflow-x: auto;
+        }
+
+        .table {
+            width: 100%;
+            border-collapse: collapse;
+            background-color: #fff;
+            color: #002b5c;
+            border-radius: 8px;
+            overflow: hidden;
+            box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
+        }
+
+        .table th, .table td {
+            padding: 12px 15px;
+            text-align: center;
+            border: 1px solid #002b5c;
+        }
+
+        .table th {
+            background-color: #002b5c;
+            color: #ffeb3b;
+            font-weight: bold;
+        }
+
+        .table td img {
+            border-radius: 6px;
+            border: 1px solid #002b5c;
+        }
+
+        @media screen and (max-width: 768px) {
+            .form-section {
+                flex-direction: column;
+                align-items: flex-start;
+            }
+
+            .form-control {
+                width: 100%;
+            }
+        }
+    </style>
+</head>
+
+{% extends 'admin/adminindex.html' %}
+{% block body %}
+<body>
+    <form id="form1" name="form1" method="post" action="/myapp/Viewpetshop_post/">
+        {% csrf_token %}
+
+        <div class="form-section">
+            <input type="text" name="textfield" class="form-control" placeholder="Search Shop..." required />
+            <input type="submit" value="Search" class="btn-blue" />
+            <a href="/myapp/Addpetshop/" class="btn-blue">Add Shop</a>
+        </div>
+
+        <div class="table-container">
+            <table class="table">
+                <thead>
+                    <tr>
+                        <th>SL No</th>
+                        <th>Shop Name</th>
+                        <th>Place</th>
+                        <th>Post</th>
+                        <th>Phone No</th>
+                        <th>Email</th>
+                        <th>Photo</th>
+                        <th>Edit</th>
+                        <th>Delete</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    {% for i in data %}
+                    <tr>
+                        <td>{{ forloop.counter }}</td>
+                        <td>{{ i.shopname }}</td>
+                        <td>{{ i.place }}</td>
+                        <td>{{ i.post }}</td>
+                        <td>{{ i.phone_no }}</td>
+                        <td>{{ i.email }}</td>
+                        <td><img src="{{ i.photo }}" height="80" width="80" /></td>
+                        <td><a href="/myapp/Editpetshop/{{ i.id }}" class="btn-blue">Edit</a></td>
+                        <td><a href="/myapp/Deletepetshop/{{ i.LOGIN.id }}" onclick="return confirm('Are you sure?')" class="btn-danger">Delete</a></td>
+                    </tr>
+                    {% endfor %}
+                </tbody>
+            </table>
+        </div>
+    </form>
+</body>
+{% endblock %}
+</html>

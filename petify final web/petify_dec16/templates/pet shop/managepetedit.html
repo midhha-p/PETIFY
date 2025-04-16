@@ -1,0 +1,104 @@
+{% extends 'pet shop/shopindex.html' %}
+{% block body %}
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+    <meta charset="utf-8" />
+    <title>Edit Pet</title>
+    <style>
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            background-color: #f7e700; /* Yellow background */
+            padding: 40px;
+            margin: 0;
+        }
+
+        .form-container {
+            background-color: #ffffff;
+            max-width: 700px;
+            margin: auto;
+            padding: 30px 40px;
+            border-radius: 15px;
+            box-shadow: 0 0 20px rgba(0, 0, 0, 0.15);
+            border: 2px solid #007bff;
+        }
+
+        h2 {
+            text-align: center;
+            color: #007bff; /* Blue heading */
+            margin-bottom: 25px;
+        }
+
+        table {
+            width: 100%;
+            border-collapse: collapse;
+        }
+
+        th, td {
+            padding: 12px 10px;
+            text-align: left;
+            color: #007bff;
+        }
+
+        input[type="text"],
+        input[type="file"],
+        input[type="number"],
+        textarea {
+            width: 100%;
+            padding: 10px;
+            border: 1px solid #007bff;
+            border-radius: 6px;
+            font-size: 15px;
+            box-sizing: border-box;
+            color: #000;
+        }
+
+        textarea {
+            resize: vertical;
+        }
+
+        .radio-group {
+            display: flex;
+            gap: 15px;
+            margin-top: 5px;
+        }
+
+        .radio-group label {
+            color: #007bff;
+        }
+
+        .btn-submit {
+            background-color: #007bff;
+            color: #fff;
+            font-weight: bold;
+            padding: 10px 25px;
+            border: none;
+            border-radius: 8px;
+            cursor: pointer;
+            transition: background-color 0.3s ease;
+        }
+
+        .btn-submit:hover {
+            background-color: #0056b3;
+        }
+    </style>
+</head>
+<body>
+    <div class="form-container">
+        <h2>Edit Pet Details</h2>
+        <form id="form1" name="form1" method="post" action="/myapp/Editpet_post/" enctype="multipart/form-data">
+            {% csrf_token %}
+            <input type="hidden" name="id" value="{{ data.id }}">
+
+            <table>
+                <tr>
+                    <th>Photo</th>
+                    <td>
+                        <img src="{{ data.photo }}" height="100" width="100" alt="Pet Photo" /><br><br>
+                        <input type="file" name="fileField" id="fileField" />
+                    </td>
+                </tr>
+                <tr>
+                    <th>Breed</th>
+                    <td><input type="text" name="textfield" id="textfield" required value="{{ data.breed }}" /></td>
+                </

@@ -1,0 +1,138 @@
+{% extends 'pet shop/shopindex.html' %}
+{% block body %}
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+    <meta charset="utf-8" />
+    <title>Add Pet</title>
+    <style>
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            background-color: #f7e700; /* Yellow Background */
+            padding: 40px;
+            margin: 0;
+        }
+
+        .form-container {
+            background-color: #ffffff;
+            max-width: 700px;
+            margin: auto;
+            padding: 30px 40px;
+            border-radius: 15px;
+            box-shadow: 0 0 20px rgba(0, 0, 0, 0.15);
+            border: 2px solid #007bff;
+        }
+
+        h2 {
+            text-align: center;
+            color: #007bff; /* Blue text */
+            margin-bottom: 25px;
+        }
+
+        table {
+            width: 100%;
+            border-collapse: collapse;
+        }
+
+        th, td {
+            padding: 12px 10px;
+            text-align: left;
+            vertical-align: top;
+            color: #007bff; /* Blue text for form labels */
+        }
+
+        input[type="text"],
+        input[type="file"],
+        textarea {
+            width: 100%;
+            padding: 10px;
+            border: 1px solid #007bff;
+            border-radius: 6px;
+            font-size: 15px;
+            box-sizing: border-box;
+            color: #000;
+        }
+
+        textarea {
+            resize: vertical;
+        }
+
+        .radio-group {
+            display: flex;
+            gap: 15px;
+            margin-top: 5px;
+            color: #007bff; /* Blue text */
+        }
+
+        .radio-group label {
+            font-weight: normal;
+            color: #007bff; /* Blue text */
+        }
+
+        .btn-submit {
+            background-color: #007bff; /* Blue Button */
+            color: #fff;
+            font-weight: bold;
+            padding: 10px 25px;
+            border: none;
+            border-radius: 8px;
+            cursor: pointer;
+            transition: background-color 0.3s ease;
+        }
+
+        .btn-submit:hover {
+            background-color: #0056b3;
+        }
+    </style>
+</head>
+<body>
+    <div class="form-container">
+        <h2>Add Pet Details</h2>
+        <form action="/myapp/Addpet_post/" method="post" enctype="multipart/form-data">
+            {% csrf_token %}
+            <table>
+                <tr>
+                    <th>Photo</th>
+                    <td><input type="file" name="fileField" id="fileField" required></td>
+                </tr>
+                <tr>
+                    <th>Breed</th>
+                    <td><input type="text" name="textfield" id="textfield" required></td>
+                </tr>
+                <tr>
+                    <th>Age</th>
+                    <td><input type="text" name="textfield2" id="textfield2" required></td>
+                </tr>
+                <tr>
+                    <th>Description</th>
+                    <td><textarea name="textarea" id="textarea" rows="5" required></textarea></td>
+                </tr>
+                <tr>
+                    <th>Price</th>
+                    <td><input type="text" name="textfield3" id="textfield3" required></td>
+                </tr>
+                <tr>
+                    <th>Gender</th>
+                    <td class="radio-group">
+                        <label><input type="radio" name="textfield5" value="MALE" required> Male</label>
+                        <label><input type="radio" name="textfield5" value="FEMALE" required> Female</label>
+                    </td>
+                </tr>
+                <tr>
+                    <th>Type</th>
+                    <td class="radio-group">
+                        <label><input type="radio" name="textfield6" value="SELL" required> Sell</label>
+                        <label><input type="radio" name="textfield6" value="ADOPT" required> Adopt</label>
+                    </td>
+                </tr>
+                <tr>
+                    <td colspan="2" style="text-align: center;">
+                        <input type="submit" name="button" value="Add Pet" class="btn-submit">
+                    </td>
+                </tr>
+            </table>
+        </form>
+    </div>
+</body>
+</html>
+{% endblock %}

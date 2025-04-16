@@ -1,0 +1,41 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<title>Untitled Document</title>
+</head>
+{% extends 'pet shop/shopindex.html' %}
+{% block body %}
+<body>
+<form id="form1" name="form1" method="post" action="/myapp/Viewgroomingreq_post/">
+<table class="table table-bordered">
+    <tr>
+        <th scope="col">SL NO</th>
+      <th scope="col">Pet</th>
+        <th scope="col">Amount</th>
+      <th scope="col">Quantity</th>
+      <th scope="col">Total Amount</th>
+{#      <th scope="col">&nbsp;</th>#}
+    </tr>
+      {% for i in data %}
+
+    <tr>
+      <td>&nbsp;{{ forloop.counter }}</td>
+{#      <td>{{ i.ORDER_MAIN.date }}</td>#}
+      <td>&nbsp;<img src="{{ i.PET.photo }}" alt="" height="100" width="100"/><br>{{ i.PET.breed }}<br>{{ i.PET.age }}<br>{{ i.PET.age }}<br>{{ i.PET.description }}<br>{{ i.PET.price }}<br>{{ i.PET.gender }}</td>
+{#      <td>&nbsp;{{ i.ORDER_MAIN.USER.username }}<br>&nbsp;{{ i.ORDER_MAIN.USER.email }}<br>&nbsp;{{ i.ORDER_MAIN.USER.phone_no }}<br>&nbsp;{{ i.ORDER_MAIN.USER.place }}<br>&nbsp;{{ i.ORDER_MAIN.USER.city }}<br>&nbsp;{{ i.ORDER_MAIN.USER.state }}<br>&nbsp;{{ i.ORDER_MAIN.USER.pincode }}</td>#}
+{#      <td>{{ i.PET_ORDER_MAIN.amount}}</td>#}
+      <td>{{ i.PET.price}}</td>
+        <td>&nbsp;{{ i.quantity }}</td>
+        <td>{{ i.PET_ORDER_MAIN.amount }}</td>
+{#        <td>{{ total }}</td>#}
+
+    <td><a href="/myapp/assignorder_get/{{ i.PET_ORDER_MAIN.id }}">Assign to delivery boy</a></td>
+    </tr>
+
+{% endfor %}
+  </table>
+</form>
+</body>
+{% endblock %}
+</html>
